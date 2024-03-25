@@ -1,0 +1,7 @@
+{
+  "Next Use Client": {
+    "prefix": "client",
+    "body": "'use client'",
+    "description": "next use client"
+  }
+}
