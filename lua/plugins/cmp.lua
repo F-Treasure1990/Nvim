@@ -38,11 +38,12 @@ return {
 				require("luasnip.loaders.from_vscode").lazy_load() -- friendly snippets loader
 				require("luasnip").filetype_extend("javascript", { "jsdoc", "html" })
 				require("luasnip").filetype_extend("typescript", { "tsdoc", "html" })
-				require("luasnip").filetype_extend("typescriptreact", { "tsdoc", "html" })
-				require("luasnip").filetype_extend("jsx", { "html" })
+				require("luasnip").filetype_extend("typescriptreact", { "tsdoc" })
+				--require("luasnip").filetype_extend("jsx", { "html" })
 			end,
 		},
 	},
+
 	config = function()
 		local cmp = require("cmp")
 		local utils = require("core.utils")
@@ -51,6 +52,10 @@ return {
 		cmp.setup({
 			formatting = {
 				format = utils.cmp_formt,
+				--[[ 	format = function(entry, vim_item)
+					vim_item.menu = "-- " .. entry.source.name
+					return vim_item
+				end, ]]
 			},
 			snippet = {
 				expand = function(args)
@@ -62,14 +67,14 @@ return {
 				-- completion = cmp.config.window.bordered(),
 				-- documentation = cmp.config.window.bordered(),
 				documentation = {
-					--border = { "╭", "─", "╮", " ", "╯", "─", "╰", " " },
 					border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-					winhighlight = "Normal:CmpMenu,FloatBorder:CmpMenuBorder,CursorLine:CmpMenuSelect,Search:None",
+					-- border = { " ", " ", " ", " ", " ", " ", " ", " " },
+					--winhighlight = "Normal:CmpMenu,FloatBorder:CmpMenuBorder,CursorLine:CmpMenuSelect,Search:None",
 				},
 				completion = {
-					--border = { " ", "─", " ", " ", " ", "─", " ", " " },
 					border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-					winhighlight = "Normal:CmpMenu,FloatBorder:CmpMenuBorder,CursorLine:CmpMenuSelect,Search:None",
+					-- border = { " ", " ", " ", " ", " ", " ", " ", " " },
+					--winhighlight = "Normal:CmpMenu,FloatBorder:CmpMenuBorder,CursorLine:CmpMenuSelect,Search:None",
 				},
 			},
 			mapping = cmp.mapping.preset.insert({
@@ -90,7 +95,7 @@ return {
 				end, { "i" }),
 				["<S-Tab>"] = cmp.mapping(function(fallback)
 					if cmp.visible() then
-						cmp.select_prev_item({ behavior = cmp.SelectBehavior.Select })
+						cmp.select_prev_item()
 					elseif luasnip.jumpable(-1) then
 						luasnip.jump(-1)
 					else
@@ -100,16 +105,24 @@ return {
 			}),
 			sources = cmp.config.sources({
 				{
+					name = "luasnip",
+					option = { use_show_condition = true },
+					entry_filter = function()
+						local context = require("cmp.config.context")
+						return not context.in_treesitter_capture("string") and not context.in_syntax_group("String")
+					end,
+				},
+				{ name = "nvim_lsp", max_item_count = 12 },
+				--				{ name = "luasnip" },
+				{ name = "saadparwaiz1/cmp_luasnip" },
+				-- { name = "nvim_lsp_signature_help", max_item_count = 5 },
+				{
 					{ name = "path" },
 					trigger_characters = { "/", "./", "../", "~" },
 				},
-				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
-				{ name = "saadparwaiz1/cmp_luasnip" },
-				{ name = "nvim_lua" },
-				{ name = "nvim_lsp_signature_help" },
 				{
 					name = "buffer",
+					max_item_count = 8,
 					option = {
 						get_bufnrs = function()
 							return vim.api.nvim_list_bufs()
@@ -117,6 +130,13 @@ return {
 					},
 				},
 			}),
+		})
+
+		cmp.setup.filetype({ "sql" }, {
+			sources = {
+				{ name = "vim-dadbod-completion" },
+				{ name = "buffer" },
+			},
 		})
 	end,
 }

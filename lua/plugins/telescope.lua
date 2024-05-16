@@ -40,11 +40,12 @@ return {
 	keys = {
 		{ "<leader><leader>", "<cmd>Telescope find_files  <cr>", { desc = "File Search" } },
 		{ "<leader>/", "<cmd>Telescope live_grep <cr>", { desc = "File Grep" } },
-		{ "<leader>fr", "<cmd>Telescope oldfiles  <cr>", { desc = "File Recents" } },
+		{ "<leader>fr", "<cmd>Telescope oldfiles <cr>", { desc = "File Recents" } },
 		{ "<leader>ss", "<cmd>Telescope spell_suggest<cr>", { desc = "Spell Suggest" } },
 		{ "<leader>sw", "<cmd>Telescope grep_string<cr>", { desc = "Spell Grep Global" } },
-		{ "-", "<cmd>Telescope buffers<cr>", { desc = "Buffer List" } },
 		{ "<leader>vt", "<cmd>Telescope help_tags<cr>", { desc = "Help Tags" } },
+		{ "<leader>y", "<cmd>Telescope registers<cr>", { desc = "Yank Registers" } },
+		{ "<leader>t", "<cmd>TodoTelescope <cr>", { desc = "Todo's" } },
 	},
 	config = function()
 		local telescope = require("telescope")

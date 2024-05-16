@@ -1,7 +1,10 @@
 return {
 	"stevearc/oil.nvim",
 	lazy = true,
-	keys = { { "<leader>e", '<Cmd>:lua require("oil").toggle_float()<CR>', desc = "Open Oil" } },
+	keys = {
+		-- { "<leader>e", '<Cmd>:lua require("oil").toggle_float()<CR>', desc = "Open Oil" }
+		{ "-", "<Cmd>Oil<CR>", desc = "Open Oil" },
+	},
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	config = function()
 		require("oil").setup({
@@ -34,6 +37,9 @@ return {
 				["<A-h>"] = "actions.toggle_hidden",
 				["g\\"] = "actions.toggle_trash",
 			},
+			view_options = {
+				show_hidden = true,
+			},
 			-- use_default_keymaps = false,
 			float = {
 				relative = "editor",
@@ -42,7 +48,7 @@ return {
 				max_width = 70,
 				max_height = 20,
 				win_options = {
-					winblend = 3,
+					winblend = 8,
 				},
 			},
 		})

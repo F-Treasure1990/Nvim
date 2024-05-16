@@ -81,14 +81,15 @@ vim.api.nvim_create_autocmd(
 -- LSP On Attach
 -- ==========================================================================
 utils.on_attach(function(_, bufnr)
-	local opts = { buffer = bufnr, remap = false }
+	local opts = { buffer = bufnr, remap = true, silent = true }
+
 	map("n", "gd", require("telescope.builtin").lsp_definitions, opts, "[G]oto Definition")
 	map("n", "gD", function()
 		vim.lsp.buf.declartion()
 	end, opts, "[G]oto Definition")
-	map("n", "gs", require("telescope.builtin").lsp_references, opts, "[G]oto [R]eferences")
+	map("n", "<leader>ll", require("telescope.builtin").lsp_references, opts, "[G]oto [R]eferences")
 	map("n", "K", vim.lsp.buf.hover, opts, "Hover Docs")
-	map("n", "gI", require("telescope.builtin").lsp_implementations, opts, "[G]oto [I]mplementation")
-	map("n", "gr", vim.lsp.buf.rename, opts, "Rename")
-	map("n", "ga", vim.lsp.buf.code_action, opts, "Code Action")
+	map("n", "<leader>li", require("telescope.builtin").lsp_implementations, opts, "[G]oto [I]mplementation")
+	map("n", "<leader>lr", vim.lsp.buf.rename, opts, "Rename")
+	map("n", "<leader>la", vim.lsp.buf.code_action, opts, "Code Action")
 end)

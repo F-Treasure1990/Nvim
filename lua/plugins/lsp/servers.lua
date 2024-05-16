@@ -69,13 +69,24 @@ local lsp_servers = {
 	},
 	tsserver = {
 		settings = {
+			typescript = {
+				inlayHints = {
+					includeInlayParameterNameHints = "literal",
+					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayVariableTypeHints = false,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayEnumMemberValueHints = true,
+				},
+			},
 			javascript = {
 				inlayHints = {
-					includeInlayEnumMemberValueHints = true,
+					includeInlayEnumMemberValueHints = "all",
+					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
 					includeInlayFunctionLikeReturnTypeHints = true,
 					includeInlayFunctionParameterTypeHints = true,
 					includeInlayParameterNameHints = "all", -- 'none' | 'literals' | 'all';
-					includeInlayParameterNameHintsWhenArgumentMatchesName = true,
 					includeInlayPropertyDeclarationTypeHints = true,
 					includeInlayVariableTypeHints = true,
 				},
@@ -89,7 +100,12 @@ local lsp_servers = {
 	marksman = {},
 	-- csharp_ls = {},
 	emmet_ls = {
-		filetypes = { "astro", "html", "javascriptreact", "pug", "sass", "scss", "svelte", "typescriptreact", "vue" },
+		filetypes = { "astro", "html", "pug", "svelte", "vue", "typescriptreact" },
+		ignore_filetypes = {
+			"scss",
+			"css",
+			"sass",
+		},
 	},
 	cssls = {},
 	dockerls = {},

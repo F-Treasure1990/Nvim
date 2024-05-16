@@ -3,5 +3,19 @@
     "prefix": "client",
     "body": "'use client'",
     "description": "next use client"
+  },
+  "Export Default Function": {
+    "prefix": "fed",
+    "body": [
+      "export default function $1($2) {",
+      " return ($3)",
+      "}"
+    ],
+    "description": "export default function"
+  },
+  "Console Log": {
+    "prefix": "log",
+    "body": "console.log($1)",
+    "description": "console log"
   }
 }

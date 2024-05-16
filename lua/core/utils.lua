@@ -52,13 +52,15 @@ end
 
 function M.cmp_formt(_, item)
 	local ELLIPSIS_CHAR = "…"
-	local MAX_LABEL_WIDTH = 28
+	local MAX_LABEL_WIDTH = 24
 	local MAX_KIND_WIDTH = 14
+	local icons = require("core.icons").kind
 
 	local get_ws = function(max, len)
 		return (" "):rep(max - len)
 	end
 	local content = item.abbr
+	--	item.kind = icons[item.kind] .. " " .. item.kind
 
 	if #content > MAX_LABEL_WIDTH then
 		item.abbr = vim.fn.strcharpart(content, 0, MAX_LABEL_WIDTH) .. ELLIPSIS_CHAR
@@ -67,6 +69,7 @@ function M.cmp_formt(_, item)
 	end
 	return item
 end
+
 ---@param plugin string
 function M.has(plugin)
 	if package.loaded["lazy"] then

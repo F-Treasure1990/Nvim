@@ -23,9 +23,9 @@ _.signcolumn = "yes:1" -- number of spaces in sign column
 _.scrolloff = 8 -- number of lines to how beyond highlighted
 _.sidescrolloff = 8 -- number of words beyond screen length
 _.laststatus = 2 -- display setting of statusbar bottom
-_.statusline = '%#StatusLineCwd#  %{fnamemodify(getcwd(), ":~")}/ %m'
+_.statusline = "  %f %m"
 _.breakindent = true -- enable break indent
-_.inccommand = "split"
+_.inccommand = "split" -- live editor below for word changes etc.
 _.hlsearch = true
 
 -- ==========================================================================
@@ -41,6 +41,14 @@ _.textwidth = 120 -- maximum width (number of cols) of text that is being insert
 -- ========================================================================== vim.g.markdown_recommended_style = 0
 vim.g.vim_markdown_frontmatter = 1
 
+-- ==========================================================================
+-- Folds
+-- ==========================================================================
+_.foldmethod = "manual"
+_.foldexpr = "v:lua.vim.treesitter.foldexpr()"
+_.foldcolumn = "0"
+_.foldlevel = 99
+_.foldlevelstart = 99
 -- ==========================================================================
 -- Text
 -- ==========================================================================
@@ -86,7 +94,7 @@ _.timeoutlen = 250
 _.timeout = true
 _.lazyredraw = false
 _.listchars = { tab = [[→→]], trail = "•", extends = "»", precedes = "«", nbsp = "␣" }
-_.fillchars = { eob = " " }
+_.fillchars = { eob = " ", stl = " ", stlnc = " ", diff = "╱", fold = " " }
 
 _g.completeopt = { "menu", "menuone", "noselect" } -- dont let autocomplete affect typing habits
 _g.spellsuggest = { "best", "9" }

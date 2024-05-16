@@ -13,6 +13,7 @@ map("n", "<leader>qp", vim.cmd.cprev, { desc = "quickfix next", silent = true })
 -- ==========================================================================
 map("n", "<Tab>", "<C-6>", { desc = "Buffer Prev" })
 map("n", "<leader>fn", "<cmd>enew<cr>", { desc = "New File" }) -- new file
+
 --[[
 local utils = require("core.utils")
 if not utils.has("bufferline.nvim") then
@@ -26,6 +27,8 @@ end
 map("v", "K", ":m '<-2<CR>gv=gv") -- move highlighted line up
 map("v", "J", ":m '>+1<CR>gv=gv") -- move highlighted line down
 map("n", "J", "mzJ`z") -- move line to end of about line
+map("n", "j", "gj") -- move line to end of about line
+map("n", "k", "gk") -- move line to end of about line
 
 -- ==========================================================================
 -- Yank
@@ -47,13 +50,11 @@ map("n", "<leader>vi", vim.show_pos, { desc = "Hl Inspect" }) -- highlight inspe
 map("n", "<leader>vc", "<cmd>Telescope colorscheme <cr>", { desc = "ColorSchemes" }) -- colorschemes
 map("n", "<leader>vh", "<cmd>Telescope highlights <cr>", { desc = "Highlights" })
 map("n", "<leader>vk", "<cmd>Telescope keymaps<cr>", { desc = "Keymaps" })
-
 -- ==========================================================================
 -- Morge
 -- ==========================================================================
 -- Windows
---('n', '<leader>we', '<C-w>=', { desc = 'Make splits equal size' }) -- make split windows equal width & height
---('n', '<leader>wd', '<C-W>c', { desc = 'Window Close' })
---('n', '<leader>w-', '<C-W>s', { desc = 'Window Split Below' })
---('n', '<leader>w\\', '<C-W>v', { desc = 'Window Split Right' })
---('n', '<leader>p', '<cmd>:bdelete<cr>', { desc = 'File Pop' })
+map("n", "<leader>we", "<C-w>=", { desc = "Make splits equal size" }) -- make split windows equal width & height
+map("n", "<leader>wp", "<C-W>c", { desc = "Window Pop" })
+map("n", "<leader>w-", "<C-W>s", { desc = "Window Split Below" })
+map("n", "<leader>w/", "<C-W>v", { desc = "Window Split Right" })

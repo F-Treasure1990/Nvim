@@ -43,6 +43,8 @@ return {
 			require("colorizer").setup({
 				filetypes = {
 					"css",
+					"scss",
+					"sass",
 					"lua",
 					"javascript",
 					"typescript",
@@ -51,11 +53,16 @@ return {
 					"html",
 				},
 				user_default_options = {
-					names = false,
-					mode = "background",
+					css = true,
+					names = true,
+					mode = "virtualtext",
 					tailwind = true,
-					virtualtext = "■",
-					always_update = false,
+					virtualtext = "■", -- 
+					always_update = true,
+					hsl_fn = true,
+					rgb_fn = true,
+					css_fn = true,
+					AARRGGBB = true,
 				},
 			})
 		end,
@@ -63,8 +70,11 @@ return {
 	{
 		"https://github.com/razak17/tailwind-fold.nvim",
 		event = "BufReadPre",
+		keys = {
+			{ "<leader>lt", "<cmd>TailwindFoldToggle<cr>", desc = "undotree" },
+		},
 		opts = {},
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
-		ft = { "html", "svelte", "astro", "vue", "typescriptreact", "php", "blade" },
+		ft = { "html", "svelte", "astro", "vue", "typescriptreact", "php", "blade", "tsx" },
 	},
 }

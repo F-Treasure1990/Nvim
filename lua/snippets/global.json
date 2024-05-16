@@ -1,10 +1,4 @@
 {
-  "snip1": {
-    "prefix": "fent",
-    "body": [
-      "expands? jumps? $1 $2 !"
-    ]
-  },
   "snip2": {
     "prefix": "all2",
     "body": [
@@ -19,5 +13,12 @@
       "V.G.${1|choice1, _subchoices,choice2,choice3|}"
     ],
     "description": "variables in a choice element"
+  },
+  "export default": {
+    "prefix": "exd",
+    "body": [
+      "export default $1"
+    ],
+    "description": "export default"
   }
 }

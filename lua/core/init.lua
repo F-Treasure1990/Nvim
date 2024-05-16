@@ -1,5 +1,5 @@
 require("core.options") -- load core options
-require("core.theme") -- custom theme
+--require("core.theme") -- custom theme
 
 local utils = require("core.utils")
 
