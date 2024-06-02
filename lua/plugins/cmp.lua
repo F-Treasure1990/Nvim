@@ -104,6 +104,8 @@ return {
 				end, { "i" }),
 			}),
 			sources = cmp.config.sources({
+
+				{ name = "nvim_lsp", max_item_count = 12 },
 				{
 					name = "luasnip",
 					option = { use_show_condition = true },
@@ -112,7 +114,6 @@ return {
 						return not context.in_treesitter_capture("string") and not context.in_syntax_group("String")
 					end,
 				},
-				{ name = "nvim_lsp", max_item_count = 12 },
 				--				{ name = "luasnip" },
 				{ name = "saadparwaiz1/cmp_luasnip" },
 				-- { name = "nvim_lsp_signature_help", max_item_count = 5 },

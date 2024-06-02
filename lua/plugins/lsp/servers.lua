@@ -100,7 +100,7 @@ local lsp_servers = {
 	marksman = {},
 	-- csharp_ls = {},
 	emmet_ls = {
-		filetypes = { "astro", "html", "pug", "svelte", "vue", "typescriptreact" },
+		filetypes = { "astro", "html", "pug", "svelte", "vue", "typescriptreact", "javascriptreact" },
 		ignore_filetypes = {
 			"scss",
 			"css",
