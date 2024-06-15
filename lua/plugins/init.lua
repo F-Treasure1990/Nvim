@@ -11,7 +11,7 @@ return {
 	{
 		"Exafunction/codeium.vim",
 		event = { "BufReadPre", "BufNewFile" },
-		-- event = 'BufReadPre',
+		commit = "289eb724e5d6fab2263e94a1ad6e54afebefafb2",
 		config = function()
 			vim.g.codeium_disable_bindings = 1 -- disable original keybindings
 			vim.g.codeium_idle_delay = 250

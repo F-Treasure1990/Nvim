@@ -1,8 +1,13 @@
 {
   "Next Use Client": {
-    "prefix": "client",
+    "prefix": "ncli",
     "body": "'use client'",
-    "description": "next use client"
+    "description": "next use on Client"
+  },
+  "Next Use Server": {
+    "prefix": "nserv",
+    "body": "'use server'",
+    "description": "next use on Server"
   },
   "Export Default Function": {
     "prefix": "fed",
